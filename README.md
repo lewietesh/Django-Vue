@@ -1,7 +1,4 @@
-# Django Vue Template ✌️ 🐍
 
-![Vue Logo](/src/assets/logo-vue.png "Vue Logo")
-![Django Logo](/src/assets/logo-django.png "Django Logo")
 
 This template is a minimal example for an application using Vue and Django.
 
@@ -15,18 +12,8 @@ data at `/api/`, and static files at `/static/`. Django admin panel is also avai
 The application templates from Vue CLI `create` and Django `createproject` are kept as close as possible to their
 original state, except where a different configuration is needed for better integration of the two frameworks.
 
-#### Alternatives
 
-If this setup is not what you are looking for, you might want look at other similar projects:
 
-* [ariera/django-vue-template](https://github.com/ariera/django-vue-template)
-* [vchaptsev/cookiecutter-django-vue](https://github.com/vchaptsev/cookiecutter-django-vue)
-
-Prefer Flask? Checkout my [gtalarico/flask-vuejs-template](https://github.com/gtalarico/flask-vuejs-template)
-
-### Demo
-
-[Live Demo](https://django-vue-template-demo.herokuapp.com/)
 
 ### Includes
 
@@ -128,33 +115,7 @@ Click Apply then Ok
 
 * Set `ALLOWED_HOSTS` on [`backend.settings.prod`](/backend/settings/prod.py)
 
-### Heroku Server
 
-```
-$ heroku apps:create django-vue-template-demo
-$ heroku git:remote --app django-vue-template-demo
-$ heroku buildpacks:add --index 1 heroku/nodejs
-$ heroku buildpacks:add --index 2 heroku/python
-$ heroku addons:create heroku-postgresql:hobby-dev
-$ heroku config:set DJANGO_SETTINGS_MODULE=backend.settings.prod
-$ heroku config:set DJANGO_SECRET_KEY='...(your django SECRET_KEY value)...'
-
-$ git push heroku
-```
-
-Heroku's nodejs buildpack will handle install for all the dependencies from the [`package.json`](/package.json) file.
-It will then trigger the `postinstall` command which calls `yarn build`.
-This will create the bundled `dist` folder which will be served by whitenoise.
-
-The python buildpack will detect the [`Pipfile`](/Pipfile) and install all the python dependencies.
-
-The [`Procfile`](/Procfile) will run Django migrations and then launch Django'S app using gunicorn, as recommended by heroku.
-
-##### Heroku One Click Deploy
-
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/gtalarico/django-vue-template)
-
-## Static Assets
 
 See `settings.dev` and [`vue.config.js`](/vue.config.js) for notes on static assets strategy.
 
@@ -170,6 +131,3 @@ and then set your CDN's origin back to your domains `/static` url.
 Whitenoise will serve static files to your CDN once, but then those assets are cached
 and served directly by the CDN.
 
-This allows for an extremely simple setup without the need for a separate static server.
-
-[Cloudfront Setup Wiki](https://github.com/gtalarico/django-vue-template/wiki/Setup-CDN-on-Cloud-Front)
